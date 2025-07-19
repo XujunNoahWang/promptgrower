@@ -103,10 +103,11 @@ const App: React.FC = () => {
           <header className="fixed top-0 left-0 right-0 z-50 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg shadow-sm border-b border-gray-200/50 dark:border-gray-700/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center py-4">
-                <div className="flex items-center">
+                <div className="flex items-center space-x-2">
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Prompt Grower
                   </h1>
+                  <span className="text-2xl"><em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em></span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <button
