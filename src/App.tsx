@@ -46,6 +46,7 @@ const App: React.FC = () => {
   const [showPreview, setShowPreview] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
   const [showWorkflowModal, setShowWorkflowModal] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(true);
 
   // Load saved data on mount
   useEffect(() => {
@@ -111,9 +112,16 @@ const App: React.FC = () => {
                   <div className="relative inline-block">
                     <span 
                       className="text-2xl cursor-pointer inline-block hover:opacity-80 transition-opacity"
-                      onClick={() => setShowWorkflowModal(true)}
+                      onClick={() => {
+                        setShowWorkflowModal(true);
+                        setIsPulsing(false);
+                      }}
                     >
-                      <em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em>
+                      <em className="text-black dark:text-white">&#123;</em> 
+                      <span className="mx-2">
+                        <span className={isPulsing ? 'pulse-plant' : ''}>🌱</span>
+                      </span>
+                      <em className="text-black dark:text-white">&#125;</em>
                     </span>
                   </div>
                 </div>

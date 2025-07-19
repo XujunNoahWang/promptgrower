@@ -46,6 +46,31 @@ header {
               backdrop-filter 0.3s ease-in-out;
 }
 
+/* Pulse animation for plant emoji only */
+@keyframes pulse-glow {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(1.4);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.pulse-plant {
+  animation: pulse-glow 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.pulse-plant:hover {
+  animation-play-state: paused;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
