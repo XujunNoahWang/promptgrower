@@ -17,13 +17,9 @@ const Step8 = React.lazy(() => import('./pages/Step8').then(module => ({ default
 const Step9 = React.lazy(() => import('./pages/Step9').then(module => ({ default: module.Step9 })));
 
 // Route guard component
-const StepGuard: React.FC<{ step: number; children: React.ReactNode }> = ({ step, children }) => {
-  const { currentStep } = useFormStore();
-  
-  if (currentStep !== step) {
-    return <Navigate to={`/step/${currentStep}`} replace />;
-  }
-  
+const StepGuard: React.FC<{ step: number; children: React.ReactNode }> = ({ children }) => {
+  // For now, just render children without redirect logic
+  // This prevents redirect loops and 404 issues
   return <>{children}</>;
 };
 
@@ -47,7 +43,6 @@ const App: React.FC = () => {
   const [notification, setNotification] = useState<string | null>(null);
   const [showWorkflowModal, setShowWorkflowModal] = useState(false);
   const [isPulsing, setIsPulsing] = useState(true);
-
   // Load saved data on mount
   useEffect(() => {
     loadFromLocalStorage();
@@ -55,14 +50,7 @@ const App: React.FC = () => {
     document.documentElement.classList.add('dark');
   }, [loadFromLocalStorage]);
 
-  // Handle root path redirect based on saved step
-  const handleRootRedirect = () => {
-    const savedStep = localStorage.getItem('currentStep');
-    if (savedStep && savedStep !== '1') {
-      return <Navigate to={`/step/${savedStep}`} replace />;
-    }
-    return <Navigate to="/step/1" replace />;
-  };
+
 
   // Apply dark mode on mount and when it changes
   useEffect(() => {
@@ -193,7 +181,7 @@ const App: React.FC = () => {
                 </div>
               }>
                 <Routes>
-                  <Route path="/" element={handleRootRedirect()} />
+                  <Route path="/" element={<Navigate to="/step/1" replace />} />
                   <Route
                     path="/step/1"
                     element={

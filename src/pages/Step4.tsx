@@ -104,8 +104,8 @@ export const Step4: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => 
             </div>
             <div className="mt-3 space-y-1">
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                Select all platforms where your application will be used.
-              </p>
+              Select all platforms where your application will be used.
+            </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 If you don't select any, AI will decide for you.
               </p>
@@ -157,8 +157,8 @@ export const Step4: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => 
             </div>
             <div className="mt-3 space-y-1">
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {compatibilityDescription}
-              </p>
+              {compatibilityDescription}
+            </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 If you don't select any, AI will decide for you.
               </p>

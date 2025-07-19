@@ -120,8 +120,8 @@ const Step5: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => {
             
             <div className="mt-3 space-y-1">
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                Select the basic features your application should include.
-              </p>
+              Select the basic features your application should include.
+            </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 If you don't select any, AI will decide for you.
               </p>
