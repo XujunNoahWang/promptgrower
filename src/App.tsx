@@ -55,6 +55,15 @@ const App: React.FC = () => {
     document.documentElement.classList.add('dark');
   }, [loadFromLocalStorage]);
 
+  // Handle root path redirect based on saved step
+  const handleRootRedirect = () => {
+    const savedStep = localStorage.getItem('currentStep');
+    if (savedStep && savedStep !== '1') {
+      return <Navigate to={`/step/${savedStep}`} replace />;
+    }
+    return <Navigate to="/step/1" replace />;
+  };
+
   // Apply dark mode on mount and when it changes
   useEffect(() => {
     if (isDarkMode) {
@@ -184,7 +193,7 @@ const App: React.FC = () => {
                 </div>
               }>
                 <Routes>
-                  <Route path="/" element={<Navigate to="/step/1" replace />} />
+                  <Route path="/" element={handleRootRedirect()} />
                   <Route
                     path="/step/1"
                     element={

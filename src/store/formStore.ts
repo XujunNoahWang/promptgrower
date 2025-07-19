@@ -504,14 +504,16 @@ export const useFormStore = create<FormStore>()(
           const saved = localStorage.getItem('prompt-grower-form');
           if (saved) {
             const parsed = JSON.parse(saved);
-            const { formData, isDarkMode } = parsed;
+            const { formData, isDarkMode, currentStep } = parsed;
             
             // Validate and merge with initial data to ensure all fields exist
             const validatedFormData = { ...initialFormData, ...formData };
             // Force dark mode as default, but allow user preference if explicitly set
             const darkMode = isDarkMode !== undefined ? !!isDarkMode : true;
+            // Ensure currentStep is valid (1-9)
+            const validCurrentStep = currentStep && currentStep >= 1 && currentStep <= 9 ? currentStep : 1;
             
-            set({ formData: validatedFormData, isDarkMode: darkMode });
+            set({ formData: validatedFormData, isDarkMode: darkMode, currentStep: validCurrentStep });
             // Update DOM immediately
             if (darkMode) {
               document.documentElement.classList.add('dark');
@@ -520,20 +522,24 @@ export const useFormStore = create<FormStore>()(
             }
           } else {
             // No saved data, set default dark mode
-            set({ formData: initialFormData, isDarkMode: true });
+            set({ formData: initialFormData, isDarkMode: true, currentStep: 1 });
             document.documentElement.classList.add('dark');
           }
         } catch (error) {
           console.error('Failed to load form data from localStorage:', error);
           // Reset to initial state if loading fails
-          set({ formData: initialFormData, isDarkMode: true });
+          set({ formData: initialFormData, isDarkMode: true, currentStep: 1 });
           document.documentElement.classList.add('dark');
         }
       },
     }),
     {
       name: 'prompt-grower-form',
-      partialize: (state) => ({ formData: state.formData, isDarkMode: state.isDarkMode }),
+      partialize: (state) => ({ 
+        formData: state.formData, 
+        isDarkMode: state.isDarkMode,
+        currentStep: state.currentStep 
+      }),
     }
   )
 ); 
