@@ -56,7 +56,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep, total
                 {stepNumber}. {stepDescription}
               </div>
               {stepNumber < totalSteps && (
-                <span className="text-gray-400 dark:text-gray-500 mx-1">-----</span>
+                <span className="text-gray-400 dark:text-gray-500 mx-1">---</span>
               )}
             </React.Fragment>
           );
