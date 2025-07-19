@@ -23,7 +23,7 @@ const Step7: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-lg shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             Project Scale & Time

@@ -22,6 +22,26 @@ code {
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
+/* Frosted glass effect for header */
+header {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Enhanced frosted glass effect for form containers */
+.bg-white\/70,
+.bg-gray-800\/70 {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Smooth transitions for glass effects */
+* {
+  transition: background-color 0.3s ease-in-out, 
+              border-color 0.3s ease-in-out, 
+              backdrop-filter 0.3s ease-in-out;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

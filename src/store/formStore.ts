@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FormData, FormStore, ValidationError } from '../types';
-import { generatePromptTemplate } from '../utils/promptTemplate';
 import { generatePromptTemplateEn } from '../utils/promptTemplateEn';
 
 // Initial form data
