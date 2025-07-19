@@ -462,9 +462,16 @@ export const useFormStore = create<FormStore>()(
       },
       
       toggleDarkMode: () => {
-        set((state) => ({ isDarkMode: !state.isDarkMode }));
-        const { isDarkMode } = get();
-        document.documentElement.classList.toggle('dark', isDarkMode);
+        set((state) => {
+          const newDarkMode = !state.isDarkMode;
+          // Update DOM immediately
+          if (newDarkMode) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          return { isDarkMode: newDarkMode };
+        });
       },
       
       validateStep: (step: number) => {
@@ -502,16 +509,26 @@ export const useFormStore = create<FormStore>()(
             
             // Validate and merge with initial data to ensure all fields exist
             const validatedFormData = { ...initialFormData, ...formData };
+            // Force dark mode as default, but allow user preference if explicitly set
+            const darkMode = isDarkMode !== undefined ? !!isDarkMode : true;
             
-            set({ formData: validatedFormData, isDarkMode: !!isDarkMode });
-            if (isDarkMode) {
+            set({ formData: validatedFormData, isDarkMode: darkMode });
+            // Update DOM immediately
+            if (darkMode) {
               document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
             }
+          } else {
+            // No saved data, set default dark mode
+            set({ formData: initialFormData, isDarkMode: true });
+            document.documentElement.classList.add('dark');
           }
         } catch (error) {
           console.error('Failed to load form data from localStorage:', error);
           // Reset to initial state if loading fails
           set({ formData: initialFormData, isDarkMode: true });
+          document.documentElement.classList.add('dark');
         }
       },
     }),

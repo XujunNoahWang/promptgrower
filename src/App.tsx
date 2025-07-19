@@ -49,6 +49,8 @@ const App: React.FC = () => {
   // Load saved data on mount
   useEffect(() => {
     loadFromLocalStorage();
+    // Ensure dark mode is applied by default
+    document.documentElement.classList.add('dark');
   }, [loadFromLocalStorage]);
 
   // Apply dark mode on mount and when it changes
@@ -59,11 +61,6 @@ const App: React.FC = () => {
       document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
-
-  // Apply dark mode immediately on mount (before data loads)
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-  }, []);
 
   // Show notification
   const showNotification = (message: string): void => {
