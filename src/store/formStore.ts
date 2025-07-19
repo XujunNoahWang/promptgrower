@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FormData, FormStore, ValidationError } from '../types';
 import { generatePromptTemplate } from '../utils/promptTemplate';
+import { generatePromptTemplateEn } from '../utils/promptTemplateEn';
 
 // Initial form data
 const initialFormData: FormData = {
@@ -266,17 +267,17 @@ const getAIRecommendations = (data: FormData): Partial<FormData> => {
   if (!data.performanceRequirement || data.performanceRequirement === 'Let AI Decide') {
     switch (data.applicationCategory) {
       case 'CLI Application':
-        recommendations.performanceRequirement = '命令行应用性能';
+        recommendations.performanceRequirement = 'CLI Application Performance';
         break;
       case 'Desktop Application':
       case 'Desktop Program (.exe)':
-        recommendations.performanceRequirement = '桌面应用性能';
+        recommendations.performanceRequirement = 'Desktop Application Performance';
         break;
       case 'Mobile Application':
-        recommendations.performanceRequirement = '移动应用性能';
+        recommendations.performanceRequirement = 'Mobile Application Performance';
         break;
       case 'Web Application':
-        recommendations.performanceRequirement = '标准Web应用性能';
+        recommendations.performanceRequirement = 'Standard Web Application Performance';
         break;
       default:
         recommendations.performanceRequirement = 'Balance Performance & Features';
@@ -411,7 +412,8 @@ const generateMetaPrompt = (data: FormData): string => {
   const finalRecommendations = getAIRecommendations(finalData);
   const consistentFinalData = { ...finalData, ...finalRecommendations };
   
-  return generatePromptTemplate(consistentFinalData);
+  // Use English template for the current English-only application
+  return generatePromptTemplateEn(consistentFinalData);
 };
 
 // Create Zustand store
