@@ -20,5 +20,9 @@ export default defineConfig({
       }
     }
   },
-  base: '/'
+  base: '/',
+  // Ensure proper SPA routing
+  preview: {
+    port: 3000
+  }
 }) 
