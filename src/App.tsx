@@ -107,7 +107,12 @@ const App: React.FC = () => {
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Prompt Grower
                   </h1>
-                  <span className="text-2xl"><em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em></span>
+                  <div className="relative inline-block hover-tooltip">
+                    <span className="text-2xl cursor-pointer inline-block"><em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em></span>
+                    <div className="tooltip-content">
+                      🧠 Your Idea → 🌱 Prompt Grower: Guided Form Input → 📝 Meta Prompt Generated → 🤖 AI (w/ Free Quota) → ⚡️ Ultimate Prompt Perfected → 💻 AI IDE → 🚀 Functional MVP Built
+                    </div>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <button
