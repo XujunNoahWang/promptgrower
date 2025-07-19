@@ -135,11 +135,12 @@ const getAIRecommendations = (data: FormData): Partial<FormData> => {
       case 'Mobile Application':
         recommendations.frontendTech = 'React Native';
         break;
-      case 'CLI Application':
-        recommendations.frontendTech = 'Node.js + TypeScript';
+      case 'Web Application':
+        recommendations.frontendTech = 'React + TypeScript';
         break;
+      case 'CLI Application':
       case 'Desktop Program (.exe)':
-        recommendations.frontendTech = 'C# + WPF';
+        // Don't recommend frontend tech for CLI and Desktop programs
         break;
       default:
         recommendations.frontendTech = 'React + TypeScript';
@@ -263,7 +264,23 @@ const getAIRecommendations = (data: FormData): Partial<FormData> => {
   
   // Recommend performance requirement if not selected or set to "Let AI Decide"
   if (!data.performanceRequirement || data.performanceRequirement === 'Let AI Decide') {
-    recommendations.performanceRequirement = 'Balance Performance & Features';
+    switch (data.applicationCategory) {
+      case 'CLI Application':
+        recommendations.performanceRequirement = '命令行应用性能';
+        break;
+      case 'Desktop Application':
+      case 'Desktop Program (.exe)':
+        recommendations.performanceRequirement = '桌面应用性能';
+        break;
+      case 'Mobile Application':
+        recommendations.performanceRequirement = '移动应用性能';
+        break;
+      case 'Web Application':
+        recommendations.performanceRequirement = '标准Web应用性能';
+        break;
+      default:
+        recommendations.performanceRequirement = 'Balance Performance & Features';
+    }
   }
   
   // Recommend third-party integrations if not selected
@@ -273,7 +290,23 @@ const getAIRecommendations = (data: FormData): Partial<FormData> => {
   
   // Recommend security requirements if not selected
   if (data.securityRequirements.length === 0) {
-    recommendations.securityRequirements = ['User Authentication & Authorization', 'HTTPS Enforcement'];
+    switch (data.applicationCategory) {
+      case 'CLI Application':
+        recommendations.securityRequirements = ['CLI Security', 'Input Validation'];
+        break;
+      case 'Desktop Application':
+      case 'Desktop Program (.exe)':
+        recommendations.securityRequirements = ['Local Security', 'File System Protection'];
+        break;
+      case 'Mobile Application':
+        recommendations.securityRequirements = ['Mobile Security', 'Data Encryption'];
+        break;
+      case 'Web Application':
+        recommendations.securityRequirements = ['User Authentication & Authorization', 'HTTPS Enforcement'];
+        break;
+      default:
+        recommendations.securityRequirements = ['User Authentication & Authorization', 'HTTPS Enforcement'];
+    }
   }
   
   // Recommend project complexity if not selected or set to "Let AI Decide"

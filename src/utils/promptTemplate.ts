@@ -1,4 +1,75 @@
 export function generatePromptTemplate(consistentFinalData: any): string {
+  // Helper function to get appropriate code quality requirements based on application category
+  const getCodeQualityRequirements = (data: any) => {
+    const category = data.applicationCategory;
+    
+    // For CLI and Desktop programs, don't show TypeScript and React standards
+    if (category === 'CLI Application' || category === 'Desktop Program (.exe)') {
+      return `**代码质量**: ${data.codeQuality.length > 0 ? data.codeQuality.join(', ') : '代码文档 + 错误处理'}
+**性能优化**: ${data.performanceOptimization.length > 0 ? data.performanceOptimization.join(', ') : '内存管理 + 高效算法'}
+**版本控制**: ${data.gitStandards.length > 0 ? data.gitStandards.join(', ') : 'Git Flow工作流'}`;
+    }
+    
+    // For other application types, show TypeScript and React standards
+    return `**TypeScript标准**: ${data.typescriptStandards.length > 0 ? data.typescriptStandards.join(', ') : '严格类型检查'}
+**React最佳实践**: ${data.reactStandards.length > 0 ? data.reactStandards.join(', ') : '函数式组件优先'}
+**代码质量**: ${data.codeQuality.length > 0 ? data.codeQuality.join(', ') : 'ESLint + Prettier'}
+**性能优化**: ${data.performanceOptimization.length > 0 ? data.performanceOptimization.join(', ') : '代码分割 + 懒加载'}
+**版本控制**: ${data.gitStandards.length > 0 ? data.gitStandards.join(', ') : 'Git Flow工作流'}`;
+  };
+
+  // Helper function to get appropriate technology stack based on application category
+  const getTechnologyStack = (data: any) => {
+    const category = data.applicationCategory;
+    
+    // For CLI applications, don't show frontend technology
+    if (category === 'CLI Application') {
+      return `**开发技术**: ${data.frontendTech === 'Other' ? data.customFrontendTech : (data.frontendTech || 'Node.js + TypeScript')}
+**后端技术**: ${data.backendTech === 'Other' ? data.customBackendTech : (data.backendTech || '本地文件系统')}
+**数据存储**: ${data.database === 'Other' ? data.customDatabase : (data.database || '本地文件系统')}
+**部署平台**: ${data.deploymentPlatform === 'Other' ? data.customDeploymentPlatform : (data.deploymentPlatform || '包管理器')}`;
+    }
+    
+    // For Desktop programs, don't show frontend technology
+    if (category === 'Desktop Program (.exe)') {
+      return `**开发技术**: ${data.frontendTech === 'Other' ? data.customFrontendTech : (data.frontendTech || 'C# + WPF')}
+**后端技术**: ${data.backendTech === 'Other' ? data.customBackendTech : (data.backendTech || '本地数据库')}
+**数据存储**: ${data.database === 'Other' ? data.customDatabase : (data.database || 'SQLite')}
+**部署平台**: ${data.deploymentPlatform === 'Other' ? data.customDeploymentPlatform : (data.deploymentPlatform || '本地安装')}`;
+    }
+    
+    // For other application types, show frontend and backend technology
+    return `**前端技术**: ${data.frontendTech === 'Other' ? data.customFrontendTech : (data.frontendTech || '请推荐最佳选择')}
+**后端技术**: ${data.backendTech === 'Other' ? data.customBackendTech : (data.backendTech || '请推荐最佳选择')}
+**数据库**: ${data.database === 'Other' ? data.customDatabase : (data.database || '请推荐最佳选择')}
+**部署平台**: ${data.deploymentPlatform === 'Other' ? data.customDeploymentPlatform : (data.deploymentPlatform || '请推荐最佳选择')}`;
+  };
+
+  // Helper function to get appropriate platform and compatibility based on application category
+  const getPlatformAndCompatibility = (data: any) => {
+    const category = data.applicationCategory;
+    
+    // For CLI applications, don't show browser compatibility
+    if (category === 'CLI Application') {
+      return `**目标平台**: ${data.targetPlatforms.length > 0 ? data.targetPlatforms.join(', ') : '跨平台'}
+**UI设计风格**: ${data.uiStyle || '简洁终端风格'}
+**性能要求**: ${data.performanceRequirement || '命令行应用性能'}`;
+    }
+    
+    // For Desktop programs, don't show browser compatibility
+    if (category === 'Desktop Program (.exe)') {
+      return `**目标平台**: ${data.targetPlatforms.length > 0 ? data.targetPlatforms.join(', ') : 'Windows'}
+**UI设计风格**: ${data.uiStyle || '原生桌面风格'}
+**性能要求**: ${data.performanceRequirement || '桌面应用性能'}`;
+    }
+    
+    // For other application types, show browser compatibility
+    return `**目标平台**: ${data.targetPlatforms.length > 0 ? data.targetPlatforms.join(', ') : '待确定'}${data.customTargetPlatform ? `, ${data.customTargetPlatform}` : ''}
+**浏览器兼容性**: ${data.browserCompatibility.length > 0 ? data.browserCompatibility.join(', ') : '主流浏览器'}${data.customBrowserCompatibility ? `, ${data.customBrowserCompatibility}` : ''}
+**UI设计风格**: ${data.uiStyle || '现代简洁风格'}
+**性能要求**: ${data.performanceRequirement || '标准Web应用性能'}`;
+  };
+
   return `# 全栈开发专家角色设定
 
 你是一位经验丰富的全栈开发专家和软件架构师，具备以下核心能力：
@@ -32,16 +103,10 @@ export function generatePromptTemplate(consistentFinalData: any): string {
 **关键模块**: ${consistentFinalData.keyModules.length > 0 ? consistentFinalData.keyModules.join(', ') : '待AI推荐'}${consistentFinalData.customModule ? `, ${consistentFinalData.customModule}` : ''}
 
 ## 技术栈偏好
-**前端技术**: ${consistentFinalData.frontendTech === 'Other' ? consistentFinalData.customFrontendTech : (consistentFinalData.frontendTech || '请推荐最佳选择')}
-**后端技术**: ${consistentFinalData.backendTech === 'Other' ? consistentFinalData.customBackendTech : (consistentFinalData.backendTech || '请推荐最佳选择')}
-**数据库**: ${consistentFinalData.database === 'Other' ? consistentFinalData.customDatabase : (consistentFinalData.database || '请推荐最佳选择')}
-**部署平台**: ${consistentFinalData.deploymentPlatform === 'Other' ? consistentFinalData.customDeploymentPlatform : (consistentFinalData.deploymentPlatform || '请推荐最佳选择')}
+${getTechnologyStack(consistentFinalData)}
 
 ## 平台和兼容性
-**目标平台**: ${consistentFinalData.targetPlatforms.length > 0 ? consistentFinalData.targetPlatforms.join(', ') : '待确定'}${consistentFinalData.customTargetPlatform ? `, ${consistentFinalData.customTargetPlatform}` : ''}
-**浏览器兼容性**: ${consistentFinalData.browserCompatibility.length > 0 ? consistentFinalData.browserCompatibility.join(', ') : '主流浏览器'}${consistentFinalData.customBrowserCompatibility ? `, ${consistentFinalData.customBrowserCompatibility}` : ''}
-**UI设计风格**: ${consistentFinalData.uiStyle || '现代简洁风格'}
-**性能要求**: ${consistentFinalData.performanceRequirement || '标准Web应用性能'}
+${getPlatformAndCompatibility(consistentFinalData)}
 
 ## 功能特性
 **基础功能**: ${consistentFinalData.basicFeatures.length > 0 ? consistentFinalData.basicFeatures.join(', ') : '标准Web应用功能'}${consistentFinalData.customBasicFeature ? `, ${consistentFinalData.customBasicFeature}` : ''}
@@ -54,11 +119,7 @@ export function generatePromptTemplate(consistentFinalData: any): string {
 **预算范围**: ${consistentFinalData.budgetRange || '中等预算'}
 
 ## 代码质量要求
-**TypeScript标准**: ${consistentFinalData.typescriptStandards.length > 0 ? consistentFinalData.typescriptStandards.join(', ') : '严格类型检查'}
-**React最佳实践**: ${consistentFinalData.reactStandards.length > 0 ? consistentFinalData.reactStandards.join(', ') : '函数式组件优先'}
-**代码质量**: ${consistentFinalData.codeQuality.length > 0 ? consistentFinalData.codeQuality.join(', ') : 'ESLint + Prettier'}
-**性能优化**: ${consistentFinalData.performanceOptimization.length > 0 ? consistentFinalData.performanceOptimization.join(', ') : '代码分割 + 懒加载'}
-**版本控制**: ${consistentFinalData.gitStandards.length > 0 ? consistentFinalData.gitStandards.join(', ') : 'Git Flow工作流'}
+${getCodeQualityRequirements(consistentFinalData)}
 
 ## 附加信息
 **特殊需求**: ${consistentFinalData.specialRequirements || '无特殊需求'}
