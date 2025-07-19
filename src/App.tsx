@@ -143,7 +143,7 @@ const App: React.FC = () => {
           </header>
 
           {/* Main Content */}
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-40 sm:pt-32">
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-48 sm:pt-32">
             {showPreview ? (
               <div className="max-w-4xl mx-auto">
                 <PreviewPane
