@@ -12,7 +12,7 @@ const STEP_DESCRIPTIONS = [
   'Tech Stack',
   'Platform',
   'UX Design',
-  'Security',
+  'Integration & Security',
   'Scale',
   'Code Standards',
   'Additional'
@@ -25,7 +25,7 @@ const STEP_DESCRIPTIONS_SHORT = [
   'Tech',
   'Platform',
   'UX',
-  'Security',
+  'Integration',
   'Scale',
   'Code',
   'Extra'
