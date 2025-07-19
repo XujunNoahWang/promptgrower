@@ -45,6 +45,7 @@ const App: React.FC = () => {
 
   const [showPreview, setShowPreview] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [showWorkflowModal, setShowWorkflowModal] = useState(false);
 
   // Load saved data on mount
   useEffect(() => {
@@ -107,11 +108,13 @@ const App: React.FC = () => {
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Prompt Grower
                   </h1>
-                  <div className="relative inline-block hover-tooltip">
-                    <span className="text-2xl cursor-pointer inline-block"><em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em></span>
-                    <div className="tooltip-content">
-                      🧠 Your Idea → 🌱 Prompt Grower: Guided Form Input → 📝 Meta Prompt Generated → 🤖 AI (w/ Free Quota) → ⚡️ Ultimate Prompt Perfected → 💻 AI IDE → 🚀 Functional MVP Built
-                    </div>
+                  <div className="relative inline-block">
+                    <span 
+                      className="text-2xl cursor-pointer inline-block hover:opacity-80 transition-opacity"
+                      onClick={() => setShowWorkflowModal(true)}
+                    >
+                      <em className="text-black dark:text-white">&#123;</em> 🌱 <em className="text-black dark:text-white">&#125;</em>
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -292,6 +295,103 @@ const App: React.FC = () => {
           {notification && (
             <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg z-50">
               {notification}
+            </div>
+          )}
+
+          {/* Workflow Modal */}
+          {showWorkflowModal && (
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center"
+              onClick={() => setShowWorkflowModal(false)}
+            >
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+              
+              {/* Modal Content */}
+              <div 
+                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 transform transition-all duration-300 ease-out"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowWorkflowModal(false)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                
+                {/* Title */}
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    Workflow
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    From idea to functional MVP
+                  </p>
+                </div>
+                
+                {/* Workflow Steps */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">🧠</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Generate Your Idea</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Define your concept and vision</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">🌱</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Complete &#123; Prompt Grower &#125; Form</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Structured input and requirements</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">📝</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Receive Meta Prompt</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Expanded and structured prompt</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">🤖</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Send to AI Tools (leverage free quota)</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Process with external AI</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">⚡️</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Receive Ultimate Prompt</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Optimized, developer-ready instruction</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                    <span className="text-2xl">💻</span>
+                    <div>
+                      <div className="font-medium text-gray-900 dark:text-white">Submit to AI IDE</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Let the IDE auto-generate your code
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                    <span className="text-2xl">🚀</span>
+                    <div>
+                      <div className="font-medium text-blue-900 dark:text-blue-100">Get Functional MVP</div>
+                      <div className="text-sm text-blue-700 dark:text-blue-300">Ready-to-deploy application output</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
