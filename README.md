@@ -28,12 +28,14 @@ Prompt Grower 是一个智能化的提示词生成工具，旨在帮助开发者
 ### ✨ 核心特性
 
 - **🧠 智能化表单设计** - 9步渐进式需求收集，覆盖项目全生命周期
-- **🎨 多应用类型支持** - Web应用、桌面程序、移动应用、CLI工具等
+- **🎨 多应用类型支持** - Web应用、桌面程序、移动应用、CLI工具、桌面程序(.exe)等
+- **🤖 AI智能推荐** - 支持"让AI决定"选项，自动推荐最适合的技术栈
 - **⚡ 实时预览生成** - 即时查看生成的元提示词效果
 - **🌙 深色模式支持** - 现代化UI设计，支持明暗主题切换
-- **💾 本地数据持久化** - 自动保存填写进度，避免数据丢失
+- **💾 本地数据持久化** - 自动保存填写进度到localStorage，避免数据丢失
 - **📱 响应式设计** - 完美适配桌面端和移动端
 - **🔄 工作流程可视化** - 清晰展示从想法到MVP的完整流程
+- **🎯 动态技术适配** - 根据应用类型自动调整技术选项
 
 ### 🚀 在线体验
 
@@ -63,16 +65,20 @@ Prompt Grower 是一个智能化的提示词生成工具，旨在帮助开发者
 ### 🛠 技术栈
 
 - **前端框架**: React 18 + TypeScript
-- **状态管理**: Zustand
-- **路由管理**: React Router DOM
-- **样式方案**: Tailwind CSS
-- **构建工具**: Vite
+- **状态管理**: Zustand (支持持久化)
+- **路由管理**: React Router DOM v6
+- **样式方案**: Tailwind CSS (支持深色模式)
+- **构建工具**: Vite (支持热重载)
+- **代码质量**: ESLint + Prettier
+- **类型检查**: TypeScript (严格模式)
 - **部署平台**: Vercel
 
 ### 📋 使用流程
 
 1. **💡 准备你的想法** - 明确你想要开发的应用概念
 2. **📝 填写9步表单** - 系统性描述项目需求和技术偏好
+   - 可选择"让AI决定"选项，让AI推荐最适合的技术栈
+   - 表单会根据应用类型动态调整技术选项
 3. **🎯 获取元提示词** - 生成结构化的开发指导提示词
 4. **🤖 提交给AI工具** - 将元提示词发送给Claude、ChatGPT等AI工具
 5. **⚡ 接收终极提示词** - 获得优化后的、开发就绪的详细指令
@@ -120,8 +126,8 @@ src/
 ├── store/              # 状态管理
 │   └── formStore.ts    # Zustand状态存储
 ├── utils/              # 工具函数
-│   ├── promptTemplate.ts     # 中文提示词模板
-│   ├── promptTemplateEn.ts   # 英文提示词模板
+│   ├── promptTemplate.ts     # 中文提示词模板 (预留多语言支持)
+│   ├── promptTemplateEn.ts   # 英文提示词模板 (当前使用)
 │   └── techOptions.ts        # 技术选项配置
 ├── types.ts            # TypeScript类型定义
 └── App.tsx            # 主应用组件
@@ -129,11 +135,12 @@ src/
 
 ### 🎨 支持的应用类型
 
-- **Web应用程序** - React、Vue、Angular等现代前端框架
+- **Web应用程序** - React、Vue、Angular、Next.js等现代前端框架
 - **桌面应用程序** - Electron、Tauri等跨平台解决方案  
-- **移动应用程序** - React Native、Flutter等移动开发框架
-- **命令行工具** - Node.js、Python、Go等CLI应用
-- **桌面程序** - WPF、Qt等原生桌面应用
+- **移动应用程序** - React Native、Flutter、Ionic等移动开发框架
+- **命令行工具** - Node.js、Python、Go、Rust等CLI应用
+- **桌面程序(.exe)** - WPF、Qt、C#等原生桌面应用
+- **其他类型** - 支持自定义应用类型，AI会智能推荐最适合的技术栈
 
 ### 🤝 贡献指南
 
@@ -158,12 +165,14 @@ Prompt Grower is an intelligent prompt generation tool designed to help develope
 ### ✨ Key Features
 
 - **🧠 Intelligent Form Design** - 9-step progressive requirement collection covering the entire project lifecycle
-- **🎨 Multi-Application Support** - Web apps, desktop programs, mobile apps, CLI tools, and more
+- **🎨 Multi-Application Support** - Web apps, desktop programs, mobile apps, CLI tools, desktop programs (.exe), and more
+- **🤖 AI Smart Recommendations** - Support "Let AI Decide" options for optimal technology stack recommendations
 - **⚡ Real-time Preview** - Instantly view generated meta-prompt effects
 - **🌙 Dark Mode Support** - Modern UI design with light/dark theme toggle
-- **💾 Local Data Persistence** - Auto-save progress to prevent data loss
+- **💾 Local Data Persistence** - Auto-save progress to localStorage to prevent data loss
 - **📱 Responsive Design** - Perfect adaptation for desktop and mobile
 - **🔄 Workflow Visualization** - Clear display of the complete idea-to-MVP process
+- **🎯 Dynamic Technology Adaptation** - Automatically adjust technology options based on application type
 
 ### 🚀 Live Demo
 
@@ -193,16 +202,20 @@ Visit [https://promptgrower.vercel.app/](https://promptgrower.vercel.app/) to st
 ### 🛠 Tech Stack
 
 - **Frontend Framework**: React 18 + TypeScript
-- **State Management**: Zustand
-- **Routing**: React Router DOM
-- **Styling**: Tailwind CSS
-- **Build Tool**: Vite
+- **State Management**: Zustand (with persistence)
+- **Routing**: React Router DOM v6
+- **Styling**: Tailwind CSS (with dark mode support)
+- **Build Tool**: Vite (with hot reload)
+- **Code Quality**: ESLint + Prettier
+- **Type Checking**: TypeScript (strict mode)
 - **Deployment**: Vercel
 
 ### 📋 Usage Workflow
 
 1. **💡 Prepare Your Idea** - Clarify your application concept
 2. **📝 Complete 9-Step Form** - Systematically describe project requirements and tech preferences
+   - Choose "Let AI Decide" options for AI-recommended technology stacks
+   - Form dynamically adjusts technology options based on application type
 3. **🎯 Get Meta-Prompt** - Generate structured development guidance prompt
 4. **🤖 Submit to AI Tools** - Send meta-prompt to Claude, ChatGPT, or other AI tools
 5. **⚡ Receive Ultimate Prompt** - Get optimized, development-ready detailed instructions
@@ -250,8 +263,8 @@ src/
 ├── store/              # State management
 │   └── formStore.ts    # Zustand state store
 ├── utils/              # Utility functions
-│   ├── promptTemplate.ts     # Chinese prompt template
-│   ├── promptTemplateEn.ts   # English prompt template
+│   ├── promptTemplate.ts     # Chinese prompt template (reserved for i18n)
+│   ├── promptTemplateEn.ts   # English prompt template (currently used)
 │   └── techOptions.ts        # Technology options config
 ├── types.ts            # TypeScript type definitions
 └── App.tsx            # Main application component
@@ -259,11 +272,12 @@ src/
 
 ### 🎨 Supported Application Types
 
-- **Web Applications** - React, Vue, Angular and other modern frontend frameworks
+- **Web Applications** - React, Vue, Angular, Next.js and other modern frontend frameworks
 - **Desktop Applications** - Electron, Tauri and other cross-platform solutions
-- **Mobile Applications** - React Native, Flutter and other mobile development frameworks
-- **Command Line Tools** - Node.js, Python, Go and other CLI applications
-- **Desktop Programs** - WPF, Qt and other native desktop applications
+- **Mobile Applications** - React Native, Flutter, Ionic and other mobile development frameworks
+- **Command Line Tools** - Node.js, Python, Go, Rust and other CLI applications
+- **Desktop Programs (.exe)** - WPF, Qt, C# and other native desktop applications
+- **Other Types** - Support custom application types with AI-recommended technology stacks
 
 ### 🤝 Contributing
 
