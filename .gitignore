@@ -79,4 +79,8 @@ jspm_packages/
 .dynamodb/
 
 # TernJS port file
-.tern-port 
+.tern-port
+
+# Temporary project files (to be removed after verification)
+scripts/verify-links.md
+PROJECT_STATUS.md 
