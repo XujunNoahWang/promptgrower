@@ -1,7 +1,7 @@
 {
   "name": "promptgrower",
   "private": true,
-  "version": "0.1.8",
+  "version": "0.1.9",
   "type": "module",
   "description": "🌱 智能提示词生成器 - 将想法转化为AI就绪的开发提示词 | AI Prompt Generator - Transform ideas into AI-ready development prompts",
   "keywords": [

@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.9] - 2025-01-20
+
+### Enhanced
+- **Major improvement**: Optimized meta-prompt template for better AI response quality
+- **Complexity-aware design**: Meta-prompt now adapts to project complexity (simple, medium, large)
+- **Role definition enhancement**: Clear AI IDE role definitions in generated prompts
+- **Over-engineering prevention**: Avoids unnecessary complexity for simple projects
+- **Output format improvement**: Generates proper Markdown documents instead of chat text
+- **Scalable requirements**: Dynamic adjustment of technical depth based on project scale
+
+### Technical Improvements
+- Enhanced `promptTemplateEn.ts` with complexity-based requirements system
+- Added dynamic code quality requirements based on application category and complexity
+- Implemented project complexity assessment and appropriate solution scaling
+- Improved output format requirements for better AI IDE compatibility
+- Added mandatory requirements for proper Markdown document generation
+
+### User Experience
+- Better generated prompts that match project complexity
+- More appropriate technical solutions for different project scales
+- Cleaner, more structured output format
+- Improved copy-paste experience for generated prompts
+
 ## [0.1.8] - 2025-01-20
 
 ### Documentation
