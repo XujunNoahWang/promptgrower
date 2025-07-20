@@ -491,17 +491,17 @@ export const useFormStore = create<FormStore>()(
           currentStep: 1,
           errors: [],
         });
-        localStorage.removeItem('prompt-grower-form');
+        localStorage.removeItem('promptgrower-form');
       },
       
       saveToLocalStorage: () => {
         const { formData, isDarkMode } = get();
-        localStorage.setItem('prompt-grower-form', JSON.stringify({ formData, isDarkMode }));
+        localStorage.setItem('promptgrower-form', JSON.stringify({ formData, isDarkMode }));
       },
       
       loadFromLocalStorage: () => {
         try {
-          const saved = localStorage.getItem('prompt-grower-form');
+          const saved = localStorage.getItem('promptgrower-form');
           if (saved) {
             const parsed = JSON.parse(saved);
             const { formData, isDarkMode, currentStep } = parsed;
@@ -534,7 +534,7 @@ export const useFormStore = create<FormStore>()(
       },
     }),
     {
-      name: 'prompt-grower-form',
+      name: 'promptgrower-form',
       partialize: (state) => ({ 
         formData: state.formData, 
         isDarkMode: state.isDarkMode,

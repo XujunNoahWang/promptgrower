@@ -186,7 +186,7 @@ const result = await response.json();
 
 ### JavaScript/TypeScript
 ```typescript
-import { PromptGrowerClient } from '@prompt-grower/client';
+import { PromptGrowerClient } from '@promptgrower/client';
 
 const client = new PromptGrowerClient({
   apiKey: 'your-api-key',

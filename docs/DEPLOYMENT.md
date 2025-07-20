@@ -228,10 +228,10 @@ http {
 ### Build and Run
 ```bash
 # Build Docker image
-docker build -t prompt-grower .
+docker build -t promptgrower .
 
 # Run container
-docker run -p 80:80 prompt-grower
+docker run -p 80:80 promptgrower
 ```
 
 ## Environment Variables
