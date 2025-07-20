@@ -23,10 +23,10 @@
   "homepage": "https://promptgrower.vercel.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/XujunNoahWang/prompt-grower.git"
+    "url": "https://github.com/XujunNoahWang/promptgrower.git"
   },
   "bugs": {
-    "url": "https://github.com/XujunNoahWang/prompt-grower/issues"
+    "url": "https://github.com/XujunNoahWang/promptgrower/issues"
   },
   "author": "XujunNoahWang <xujun.noah.wang@gmail.com>",
   "license": "MIT",

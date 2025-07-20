@@ -5,10 +5,10 @@
 **智能提示词生成器 | AI Prompt Generator**
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-promptgrower.vercel.app-blue?style=for-the-badge)](https://promptgrower.vercel.app/)
-[![GitHub Stars](https://img.shields.io/github/stars/XujunNoahWang/prompt-grower?style=for-the-badge)](https://github.com/XujunNoahWang/prompt-grower)
+[![GitHub Stars](https://img.shields.io/github/stars/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/XujunNoahWang/prompt-grower?style=for-the-badge)](https://github.com/XujunNoahWang/prompt-grower/issues)
-[![GitHub Forks](https://img.shields.io/github/forks/XujunNoahWang/prompt-grower?style=for-the-badge)](https://github.com/XujunNoahWang/prompt-grower/fork)
+[![GitHub Issues](https://img.shields.io/github/issues/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower/fork)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 
 *从想法到功能MVP的智能化开发流程*
@@ -83,8 +83,8 @@ Prompt Grower 是一个智能化的提示词生成工具，旨在帮助开发者
 
 ```bash
 # 克隆项目
-git clone https://github.com/XujunNoahWang/prompt-grower.git
-cd prompt-grower
+git clone https://github.com/XujunNoahWang/promptgrower.git
+cd promptgrower
 
 # 安装依赖
 npm install
@@ -213,8 +213,8 @@ Visit [https://promptgrower.vercel.app/](https://promptgrower.vercel.app/) to st
 
 ```bash
 # Clone the repository
-git clone https://github.com/XujunNoahWang/prompt-grower.git
-cd prompt-grower
+git clone https://github.com/XujunNoahWang/promptgrower.git
+cd promptgrower
 
 # Install dependencies
 npm install
@@ -283,6 +283,6 @@ Thanks to all developers and users who have contributed to this project!
 
 **Made with ❤️ by developers, for developers**
 
-[⭐ Star this repo](https://github.com/XujunNoahWang/prompt-grower) | [🐛 Report Bug](https://github.com/XujunNoahWang/prompt-grower/issues) | [💡 Request Feature](https://github.com/XujunNoahWang/prompt-grower/issues) | [📖 Documentation](docs/) | [❓ FAQ](docs/FAQ.md) | [🗺️ Roadmap](ROADMAP.md)
+[⭐ Star this repo](https://github.com/XujunNoahWang/promptgrower) | [🐛 Report Bug](https://github.com/XujunNoahWang/promptgrower/issues) | [💡 Request Feature](https://github.com/XujunNoahWang/promptgrower/issues)| [📖 Documentation](docs/) | [❓ FAQ](docs/FAQ.md) | [🗺️ Roadmap](ROADMAP.md)
 
 </div>

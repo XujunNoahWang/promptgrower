@@ -84,4 +84,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-For more details about upcoming features and development progress, please check our [GitHub Issues](https://github.com/XujunNoahWang/prompt-grower/issues) and [Project Board](https://github.com/XujunNoahWang/prompt-grower/projects).
+For more details about upcoming features and development progress, please check our [GitHub Issues](https://github.com/XujunNoahWang/promptgrower/issues) and [Project Board](https://github.com/XujunNoahWang/promptgrower/projects).

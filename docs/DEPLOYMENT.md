@@ -5,7 +5,7 @@ This guide covers various deployment options for Prompt Grower, from development
 ## Quick Deploy to Vercel (Recommended)
 
 ### One-Click Deploy
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/XujunNoahWang/prompt-grower)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/XujunNoahWang/promptgrower)
 
 ### Manual Vercel Deployment
 

@@ -319,4 +319,4 @@ We welcome contributions to official SDKs:
 3. **Install** the client library
 4. **Start building** with the API
 
-For updates on API availability, follow our [GitHub repository](https://github.com/XujunNoahWang/prompt-grower) or join our community discussions.
+For updates on API availability, follow our [GitHub repository](https://github.com/XujunNoahWang/promptgrower) or join our community discussions.
