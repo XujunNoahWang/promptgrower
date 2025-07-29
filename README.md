@@ -4,14 +4,14 @@
 
 **智能提示词生成器 | AI Prompt Generator**
 
+[![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower/releases)
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-promptgrower.vercel.app-blue?style=for-the-badge)](https://promptgrower.vercel.app/)
 [![GitHub Stars](https://img.shields.io/github/stars/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower/issues)
-[![GitHub Forks](https://img.shields.io/github/forks/XujunNoahWang/promptgrower?style=for-the-badge)](https://github.com/XujunNoahWang/promptgrower/fork)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 
-*从想法到功能MVP的智能化开发流程*
+*从想法到功能MVP的智能化开发流程 | Transform ideas into AI-ready development prompts*
 
 [English](#english) | [中文](#中文)
 
@@ -27,19 +27,43 @@ Prompt Grower 是一个智能化的提示词生成工具，旨在帮助开发者
 
 ### ✨ 核心特性
 
-- **🧠 智能化表单设计** - 9步渐进式需求收集，覆盖项目全生命周期
-- **🎨 多应用类型支持** - Web应用、桌面程序、移动应用、CLI工具、桌面程序(.exe)等
-- **🤖 AI智能推荐** - 支持"让AI决定"选项，自动推荐最适合的技术栈
-- **⚡ 实时预览生成** - 即时查看生成的元提示词效果
-- **🌙 深色模式支持** - 现代化UI设计，支持明暗主题切换
-- **💾 本地数据持久化** - 自动保存填写进度到localStorage，避免数据丢失
-- **📱 响应式设计** - 完美适配桌面端和移动端
-- **🔄 工作流程可视化** - 清晰展示从想法到MVP的完整流程
-- **🎯 动态技术适配** - 根据应用类型自动调整技术选项
+#### 🎯 智能化开发流程
+- **9步渐进式收集** - 系统性需求分析，从想法到技术实现的完整覆盖
+- **AI智能推荐** - 支持"让AI决定"选项，基于项目特点推荐最优技术栈
+- **复杂度自适应** - 根据项目规模自动调整技术深度和实现方案
+
+#### 🚀 多平台全覆盖
+- **Web应用** - React、Vue、Angular、Next.js等现代前端框架
+- **桌面应用** - Electron、Tauri、WPF、Qt等跨平台解决方案
+- **移动应用** - React Native、Flutter、原生iOS/Android开发
+- **CLI工具** - Node.js、Python、Go、Rust等命令行应用
+- **其他类型** - 支持自定义应用类型，AI智能匹配技术栈
+
+#### ⚡ 极致用户体验
+- **实时预览** - 即时查看生成的元提示词，所见即所得
+- **深色模式** - 现代化UI设计，护眼深色主题
+- **自动保存** - 本地数据持久化，永不丢失填写进度
+- **响应式设计** - 完美适配桌面、平板、手机等所有设备
+- **一键复制** - 生成的提示词一键复制到剪贴板
 
 ### 🚀 在线体验
 
 访问 [https://promptgrower.vercel.app/](https://promptgrower.vercel.app/) 立即开始使用！
+
+### 🎉 最新更新 (v1.1.0)
+
+#### ✨ 重大改进
+- **🧠 智能复杂度适配** - 元提示词现在根据项目复杂度自动调整技术深度
+- **🎯 角色定义增强** - 为AI IDE提供更清晰的角色定义和输出要求
+- **📋 防止过度工程** - 避免简单项目的不必要复杂性
+- **📄 输出格式优化** - 生成标准Markdown文档而非聊天文本
+- **⚡ 可扩展需求** - 基于项目规模动态调整技术要求
+
+#### 🔧 技术提升
+- 增强的提示词模板，提供更好的AI响应质量
+- 基于应用类别和复杂度的动态代码质量要求
+- 改进的项目复杂度评估和解决方案缩放
+- 更好的AI IDE兼容性和复制粘贴体验
 
 ### 📸 应用截图
 
@@ -64,26 +88,43 @@ Prompt Grower 是一个智能化的提示词生成工具，旨在帮助开发者
 
 ### 🛠 技术栈
 
-- **前端框架**: React 18 + TypeScript
-- **状态管理**: Zustand (支持持久化)
-- **路由管理**: React Router DOM v6
-- **样式方案**: Tailwind CSS (支持深色模式)
-- **构建工具**: Vite (支持热重载)
-- **代码质量**: ESLint + Prettier
-- **类型检查**: TypeScript (严格模式)
-- **部署平台**: Vercel
+#### 🎨 前端技术
+- **框架**: React 18 + TypeScript (严格模式)
+- **状态管理**: Zustand (轻量级 + 持久化)
+- **路由**: React Router DOM v6 (现代化路由)
+- **样式**: Tailwind CSS (原子化CSS + 深色模式)
+
+#### ⚡ 开发工具
+- **构建**: Vite (极速热重载 + 优化打包)
+- **代码质量**: ESLint + Prettier (自动格式化)
+- **类型安全**: TypeScript 严格模式
+- **部署**: Vercel (自动化CI/CD)
+
+#### 🏗 架构特点
+- **组件化设计** - 高度可复用的模块化架构
+- **响应式布局** - Mobile-first设计理念
+- **性能优化** - 代码分割 + 懒加载
+- **用户体验** - 流畅动画 + 即时反馈
 
 ### 📋 使用流程
 
-1. **💡 准备你的想法** - 明确你想要开发的应用概念
-2. **📝 填写9步表单** - 系统性描述项目需求和技术偏好
-   - 可选择"让AI决定"选项，让AI推荐最适合的技术栈
-   - 表单会根据应用类型动态调整技术选项
-3. **🎯 获取元提示词** - 生成结构化的开发指导提示词
-4. **🤖 提交给AI工具** - 将元提示词发送给Claude、ChatGPT等AI工具
-5. **⚡ 接收终极提示词** - 获得优化后的、开发就绪的详细指令
-6. **💻 AI IDE自动生成** - 在Cursor、Windsurf等AI IDE中自动生成代码
-7. **🚀 获得功能MVP** - 得到可部署的应用程序
+#### 🎯 三步快速上手
+1. **💡 描述想法** → 填写9步智能表单，系统收集项目需求
+2. **📝 生成提示词** → 获得结构化的AI开发指导提示词  
+3. **🚀 AI自动开发** → 提交给AI工具，获得完整的MVP应用
+
+#### 🔄 完整开发工作流
+```
+想法概念 → Prompt Grower表单 → 元提示词 → AI工具优化 → 终极提示词 → AI IDE生成 → 功能MVP
+   💡           📝              🎯         🤖           ⚡           💻          🚀
+```
+
+#### 🛠 推荐AI工具链
+- **提示词优化**: Claude、ChatGPT、Gemini
+- **代码生成**: Cursor、Windsurf、GitHub Copilot
+- **部署平台**: Vercel、Netlify、Railway
+
+> 💡 **专业提示**: 选择"让AI决定"选项可获得基于项目特点的最优技术栈推荐
 
 ### 🏗 本地开发
 
@@ -164,19 +205,43 @@ Prompt Grower is an intelligent prompt generation tool designed to help develope
 
 ### ✨ Key Features
 
-- **🧠 Intelligent Form Design** - 9-step progressive requirement collection covering the entire project lifecycle
-- **🎨 Multi-Application Support** - Web apps, desktop programs, mobile apps, CLI tools, desktop programs (.exe), and more
-- **🤖 AI Smart Recommendations** - Support "Let AI Decide" options for optimal technology stack recommendations
-- **⚡ Real-time Preview** - Instantly view generated meta-prompt effects
-- **🌙 Dark Mode Support** - Modern UI design with light/dark theme toggle
-- **💾 Local Data Persistence** - Auto-save progress to localStorage to prevent data loss
-- **📱 Responsive Design** - Perfect adaptation for desktop and mobile
-- **🔄 Workflow Visualization** - Clear display of the complete idea-to-MVP process
-- **🎯 Dynamic Technology Adaptation** - Automatically adjust technology options based on application type
+#### 🎯 Intelligent Development Workflow
+- **9-Step Progressive Collection** - Systematic requirement analysis from idea to technical implementation
+- **AI Smart Recommendations** - "Let AI Decide" options for optimal technology stack suggestions
+- **Complexity Adaptation** - Automatically adjusts technical depth based on project scale
+
+#### 🚀 Multi-Platform Coverage
+- **Web Applications** - React, Vue, Angular, Next.js and modern frontend frameworks
+- **Desktop Applications** - Electron, Tauri, WPF, Qt cross-platform solutions
+- **Mobile Applications** - React Native, Flutter, native iOS/Android development
+- **CLI Tools** - Node.js, Python, Go, Rust command-line applications
+- **Custom Types** - Support for custom application types with AI-matched tech stacks
+
+#### ⚡ Ultimate User Experience
+- **Real-time Preview** - Instantly view generated meta-prompts with live updates
+- **Dark Mode** - Modern UI design with eye-friendly dark theme
+- **Auto-save** - Local data persistence, never lose your progress
+- **Responsive Design** - Perfect adaptation for desktop, tablet, and mobile devices
+- **One-click Copy** - Generated prompts copied to clipboard instantly
 
 ### 🚀 Live Demo
 
 Visit [https://promptgrower.vercel.app/](https://promptgrower.vercel.app/) to start using it now!
+
+### 🎉 Latest Updates (v1.1.0)
+
+#### ✨ Major Improvements
+- **🧠 Smart Complexity Adaptation** - Meta-prompts now automatically adjust technical depth based on project complexity
+- **🎯 Enhanced Role Definition** - Clearer role definitions and output requirements for AI IDEs
+- **📋 Over-engineering Prevention** - Avoids unnecessary complexity for simple projects
+- **📄 Output Format Optimization** - Generates standard Markdown documents instead of chat text
+- **⚡ Scalable Requirements** - Dynamic technical requirements based on project scale
+
+#### 🔧 Technical Enhancements
+- Enhanced prompt templates for better AI response quality
+- Dynamic code quality requirements based on application category and complexity
+- Improved project complexity assessment and solution scaling
+- Better AI IDE compatibility and copy-paste experience
 
 ### 📸 Screenshots
 
@@ -201,26 +266,43 @@ Visit [https://promptgrower.vercel.app/](https://promptgrower.vercel.app/) to st
 
 ### 🛠 Tech Stack
 
-- **Frontend Framework**: React 18 + TypeScript
-- **State Management**: Zustand (with persistence)
-- **Routing**: React Router DOM v6
-- **Styling**: Tailwind CSS (with dark mode support)
-- **Build Tool**: Vite (with hot reload)
-- **Code Quality**: ESLint + Prettier
-- **Type Checking**: TypeScript (strict mode)
-- **Deployment**: Vercel
+#### 🎨 Frontend Technologies
+- **Framework**: React 18 + TypeScript (strict mode)
+- **State Management**: Zustand (lightweight + persistence)
+- **Routing**: React Router DOM v6 (modern routing)
+- **Styling**: Tailwind CSS (atomic CSS + dark mode)
+
+#### ⚡ Development Tools
+- **Build**: Vite (lightning-fast HMR + optimized bundling)
+- **Code Quality**: ESLint + Prettier (auto-formatting)
+- **Type Safety**: TypeScript strict mode
+- **Deployment**: Vercel (automated CI/CD)
+
+#### 🏗 Architecture Features
+- **Component-based Design** - Highly reusable modular architecture
+- **Responsive Layout** - Mobile-first design philosophy
+- **Performance Optimization** - Code splitting + lazy loading
+- **User Experience** - Smooth animations + instant feedback
 
 ### 📋 Usage Workflow
 
-1. **💡 Prepare Your Idea** - Clarify your application concept
-2. **📝 Complete 9-Step Form** - Systematically describe project requirements and tech preferences
-   - Choose "Let AI Decide" options for AI-recommended technology stacks
-   - Form dynamically adjusts technology options based on application type
-3. **🎯 Get Meta-Prompt** - Generate structured development guidance prompt
-4. **🤖 Submit to AI Tools** - Send meta-prompt to Claude, ChatGPT, or other AI tools
-5. **⚡ Receive Ultimate Prompt** - Get optimized, development-ready detailed instructions
-6. **💻 AI IDE Auto-Generation** - Auto-generate code in Cursor, Windsurf, or other AI IDEs
-7. **🚀 Get Functional MVP** - Obtain deployable application
+#### 🎯 Quick 3-Step Process
+1. **💡 Describe Idea** → Complete 9-step intelligent form to collect project requirements
+2. **📝 Generate Prompt** → Receive structured AI development guidance prompt
+3. **🚀 AI Auto-Development** → Submit to AI tools and get complete MVP application
+
+#### 🔄 Complete Development Workflow
+```
+Idea Concept → Prompt Grower Form → Meta-Prompt → AI Tool Optimization → Ultimate Prompt → AI IDE Generation → Functional MVP
+     💡              📝                🎯              🤖                    ⚡               💻                🚀
+```
+
+#### 🛠 Recommended AI Toolchain
+- **Prompt Optimization**: Claude, ChatGPT, Gemini
+- **Code Generation**: Cursor, Windsurf, GitHub Copilot
+- **Deployment Platforms**: Vercel, Netlify, Railway
+
+> 💡 **Pro Tip**: Choose "Let AI Decide" options to get optimal technology stack recommendations based on your project characteristics
 
 ### 🏗 Local Development
 
@@ -297,6 +379,6 @@ Thanks to all developers and users who have contributed to this project!
 
 **Made with ❤️ by developers, for developers**
 
-[⭐ Star this repo](https://github.com/XujunNoahWang/promptgrower) | [🐛 Report Bug](https://github.com/XujunNoahWang/promptgrower/issues) | [💡 Request Feature](https://github.com/XujunNoahWang/promptgrower/issues)| [📖 Documentation](docs/) | [❓ FAQ](docs/FAQ.md) | [🗺️ Roadmap](ROADMAP.md)
+[⭐ Star this repo](https://github.com/XujunNoahWang/promptgrower) | [🐛 Report Bug](https://github.com/XujunNoahWang/promptgrower/issues) | [💡 Request Feature](https://github.com/XujunNoahWang/promptgrower/issues) | [📖 Documentation](docs/) | [❓ FAQ](docs/FAQ.md) | [🗺️ Roadmap](ROADMAP.md)
 
 </div>

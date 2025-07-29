@@ -87,6 +87,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mobile-first responsive design
 - Professional color scheme with dark mode support
 
+## [1.1.0] - 2025-01-29
+
+### Major Release - Enhanced Intelligence & User Experience
+
+#### 🎉 New Features
+- **Version Badge**: Added version badge to README for better project visibility
+- **Enhanced Documentation**: Comprehensive README optimization with better structure and clarity
+- **Improved Feature Presentation**: Reorganized feature descriptions for better understanding
+- **Workflow Visualization**: Enhanced usage workflow with visual diagrams and clear steps
+
+#### ✨ User Experience Improvements
+- **Better Feature Organization**: Grouped features into logical categories (Intelligence, Platform Coverage, User Experience)
+- **Clearer Value Proposition**: Improved messaging to highlight the tool's unique benefits
+- **Enhanced Onboarding**: Better explanation of the complete development workflow
+- **Professional Presentation**: More polished and professional documentation structure
+
+#### 🔧 Technical Documentation
+- **Architecture Highlights**: Better explanation of technical choices and benefits
+- **Toolchain Recommendations**: Clear guidance on recommended AI tools and platforms
+- **Development Workflow**: Step-by-step guide from idea to MVP
+- **Pro Tips**: Added professional tips for optimal usage
+
+#### 📋 Content Improvements
+- **Bilingual Enhancement**: Improved both Chinese and English documentation
+- **Feature Categorization**: Better organization of core features
+- **Visual Hierarchy**: Improved document structure with better headings and formatting
+- **Call-to-Action**: Enhanced user engagement with clear next steps
+
+### 🚀 Impact
+- Better user onboarding and understanding
+- Increased project professionalism and credibility
+- Clearer value proposition for potential users
+- Enhanced developer experience with better documentation
+
 ## [Unreleased]
 
 ### Planned Features

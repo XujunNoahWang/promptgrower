@@ -127,6 +127,13 @@ export function generatePromptTemplateEn(consistentFinalData: any): string {
     }
   };
 
+  // Helper function to clean up technology names for Context7
+  const getTechnologies = (tech: string): string => {
+    if (!tech || tech === 'Let AI Decide') return 'Selected Technology';
+    if (tech === 'Other') return 'Custom Technology';
+    return tech;
+  };
+
   const complexity = consistentFinalData.projectComplexity || 'Medium Project (1-2 months)';
 
   return `# AI Development Expert Role Definition
@@ -146,6 +153,13 @@ You are an experienced development expert and software architect with the follow
 - **Code Quality First**: Follow appropriate best practices for the project scale
 - **Security and Performance**: Consider these aspects appropriately for the project complexity
 - **Maintainability**: Provide solutions that can be maintained by the target team
+
+## Context7 Integration for Latest Documentation
+**IMPORTANT**: Use Context7 for up-to-date documentation and code examples:
+- When referencing any libraries, frameworks, or tools, use "use context7" to get the latest version-specific documentation
+- This ensures all code examples use current APIs and best practices
+- Especially important for rapidly evolving frameworks like React, Next.js, Vue, Angular, and backend libraries
+- Context7 will provide accurate, version-specific code examples instead of potentially outdated information
 
 ## Project Complexity Assessment
 Based on the project constraints, you should:
@@ -289,6 +303,21 @@ Based on the above requirements and project complexity, generate a development g
 - Detailed technical choice analysis
 - Complete deployment and monitoring setup
 
+## Context7 Usage Guidelines
+When implementing the solution, always use Context7 for accurate documentation:
+
+### Required Context7 Commands:
+- **Frontend Frameworks**: ${getTechnologies(consistentFinalData.frontendTech)} - Use "use context7" before implementing any framework-specific code
+- **Backend Technologies**: ${getTechnologies(consistentFinalData.backendTech)} - Get latest API documentation with "use context7"  
+- **Database Solutions**: ${getTechnologies(consistentFinalData.database)} - Fetch current connection patterns with "use context7"
+- **Deployment Platforms**: ${getTechnologies(consistentFinalData.deploymentPlatform)} - Get up-to-date deployment guides with "use context7"
+
+### Context7 Best Practices:
+1. Always use "use context7" before implementing any library-specific code
+2. Check for latest version compatibility when combining multiple technologies
+3. Verify current best practices for the selected tech stack
+4. Get accurate package.json dependencies and versions
+
 ## Special Requirements
 Please ensure the generated prompt:
 - **Matches the project complexity level** - Don't over-engineer simple projects
@@ -299,6 +328,7 @@ Please ensure the generated prompt:
 - **Avoids unnecessary features** - Focus on what's actually needed
 - **Provides appropriate testing strategy** - Scale testing to project complexity
 - **Includes suitable deployment instructions** - Match deployment complexity to project scale
+- **Uses Context7 for all technology references** - Ensure all code examples use latest APIs
 
 ## Role Definition for AI IDE
 The generated prompt should include a clear role definition that tells the AI IDE:
@@ -317,17 +347,23 @@ The generated prompt should include a clear role definition that tells the AI ID
 ## AI IDE Role Definition
 [Your role definition here]
 
+## Context7 Setup Instructions
+Before starting development, ensure Context7 is configured in your AI IDE:
+1. Install Context7 MCP server (npm install -g @upstash/context7 or via Docker)
+2. Configure MCP settings in your AI IDE
+3. Use "use context7" command before implementing any library-specific code
+
 ## Project Overview  
 [Project description and requirements]
 
 ## Technical Implementation
-[Technical details and code examples]
+[Technical details and code examples - Always use "use context7" for library documentation]
 
 ## Deployment Instructions
-[Deployment and setup instructions]
+[Deployment and setup instructions - Use "use context7" for platform-specific guides]
 
 ## Additional Notes
-[Any additional information]
+[Any additional information including Context7 usage reminders]
 
 **MANDATORY REQUIREMENTS:**
 1. **Generate a file** - Create a downloadable Markdown file, not inline text

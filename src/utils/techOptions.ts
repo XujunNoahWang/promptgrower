@@ -60,7 +60,7 @@ import {
 } from '../types';
 
 // Get frontend technologies based on application category
-export const getFrontendTechs = (applicationCategory: string) => {
+export const getFrontendTechs = (applicationCategory: string): readonly string[] => {
   switch (applicationCategory) {
     case 'Desktop Application':
       return DESKTOP_TECHS;
@@ -84,7 +84,7 @@ export const getBackendTechs = (applicationCategory: string) => {
     case 'CLI Application':
       return CLI_BACKEND_TECHS;
     case 'Desktop Program (.exe)':
-      return DESKTOP_MOBILE_BACKEND_TECHS;
+      return ['Let AI Decide', 'Local Database Only', 'SQLite Database', 'Local File Storage', 'No Backend', 'Other']; // Custom options for native desktop programs
     default:
       return WEB_BACKEND_TECHS;
   }
@@ -111,9 +111,9 @@ export const needsTypeScriptStandards = (applicationCategory: string) => {
   switch (applicationCategory) {
     case 'CLI Application':
       // CLI applications can use various languages, TypeScript is optional
-      return false;
+      return true; // Changed to true - some CLI apps use TypeScript/Node.js
     case 'Desktop Program (.exe)':
-      // Desktop programs typically don't use TypeScript
+      // Desktop programs typically don't use TypeScript (C#, C++, etc.)
       return false;
     case 'Desktop Application':
     case 'Mobile Application':
@@ -265,8 +265,8 @@ export const needsFrontendTech = (applicationCategory: string) => {
       // CLI applications typically don't need frontend technology
       return false;
     case 'Desktop Program (.exe)':
-      // Desktop programs might not use frontend frameworks
-      return false;
+      // Desktop programs might not use web frontend frameworks, but have their own UI
+      return true; // Changed to true - they need UI framework selection
     case 'Desktop Application':
     case 'Mobile Application':
     case 'Web Application':
@@ -280,10 +280,10 @@ export const needsBackendTech = (applicationCategory: string) => {
   switch (applicationCategory) {
     case 'CLI Application':
       // CLI applications might need backend logic but not traditional backend
-      return false;
+      return true; // Changed to true - CLI apps often need backend logic
     case 'Desktop Program (.exe)':
-      // Desktop programs might not need traditional backend
-      return false;
+      // Desktop programs might not need traditional web backend, but may need data layer
+      return true; // Changed to true - they might need database/data layer
     case 'Desktop Application':
     case 'Mobile Application':
     case 'Web Application':
@@ -380,4 +380,56 @@ export const getSecurityRequirements = (applicationCategory: string) => {
     default:
       return WEB_SECURITY_REQUIREMENTS;
   }
+};
+
+// Advanced logic: Check if TypeScript standards should be shown based on selected frontend/backend tech
+export const shouldShowTypeScriptStandards = (applicationCategory: string, frontendTech?: string, backendTech?: string) => {
+  // Desktop Program (.exe) typically doesn't use TypeScript
+  if (applicationCategory === 'Desktop Program (.exe)') {
+    return false;
+  }
+  
+  // If specific technologies are selected, check if they use TypeScript
+  if (frontendTech && frontendTech.includes('TypeScript')) {
+    return true;
+  }
+  
+  if (backendTech && (backendTech.includes('Node.js') || backendTech.includes('TypeScript'))) {
+    return true;
+  }
+  
+  // CLI applications only show TypeScript standards if using Node.js/TypeScript
+  if (applicationCategory === 'CLI Application') {
+    if (frontendTech && (frontendTech.includes('Node.js') || frontendTech.includes('TypeScript'))) {
+      return true;
+    }
+    if (backendTech && (backendTech.includes('Node.js') || backendTech.includes('TypeScript'))) {
+      return true;
+    }
+    return false;
+  }
+  
+  // Default behavior for other application types
+  return needsTypeScriptStandards(applicationCategory);
+};
+
+// Advanced logic: Check if React standards should be shown based on selected frontend tech
+export const shouldShowReactStandards = (applicationCategory: string, frontendTech?: string) => {
+  // Desktop Program (.exe) and CLI typically don't use React
+  if (applicationCategory === 'Desktop Program (.exe)' || applicationCategory === 'CLI Application') {
+    return false;
+  }
+  
+  // If specific frontend technology is selected, check if it uses React
+  if (frontendTech && frontendTech.includes('React')) {
+    return true;
+  }
+  
+  // For Electron apps, check if React is used
+  if (applicationCategory === 'Desktop Application' && frontendTech && frontendTech.includes('React')) {
+    return true;
+  }
+  
+  // Default behavior for other application types
+  return needsReactStandards(applicationCategory);
 }; 

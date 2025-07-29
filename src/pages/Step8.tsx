@@ -6,8 +6,8 @@ import {
   getCodeQualityOptions,
   getPerformanceOptimizationOptions,
   getGitStandardsOptions,
-  needsTypeScriptStandards,
-  needsReactStandards
+  shouldShowTypeScriptStandards,
+  shouldShowReactStandards
 } from '../utils/techOptions';
 import { useFormStore } from '../store/formStore';
 
@@ -17,6 +17,8 @@ export const Step8: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => 
   // Add fallback for undefined formData
   const safeFormData = formData || {
     applicationCategory: 'Let AI Decide',
+    frontendTech: 'Let AI Decide',
+    backendTech: 'Let AI Decide',
     typescriptStandards: [],
     reactStandards: [],
     codeQuality: [],
@@ -31,9 +33,16 @@ export const Step8: React.FC<StepFormProps> = ({ onNext, onPrev, onUpdate }) => 
   const performanceOptimizationOptions = getPerformanceOptimizationOptions(safeFormData.applicationCategory);
   const gitStandardsOptions = getGitStandardsOptions(safeFormData.applicationCategory);
 
-  // Check if sections should be displayed
-  const showTypeScriptStandards = needsTypeScriptStandards(safeFormData.applicationCategory);
-  const showReactStandards = needsReactStandards(safeFormData.applicationCategory);
+  // Check if sections should be displayed based on selected technologies
+  const showTypeScriptStandards = shouldShowTypeScriptStandards(
+    safeFormData.applicationCategory, 
+    safeFormData.frontendTech, 
+    safeFormData.backendTech
+  );
+  const showReactStandards = shouldShowReactStandards(
+    safeFormData.applicationCategory, 
+    safeFormData.frontendTech
+  );
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();

@@ -1,7 +1,7 @@
 {
   "name": "promptgrower",
   "private": true,
-  "version": "0.1.9",
+  "version": "1.1.0",
   "type": "module",
   "description": "🌱 智能提示词生成器 - 将想法转化为AI就绪的开发提示词 | AI Prompt Generator - Transform ideas into AI-ready development prompts",
   "keywords": [
@@ -47,8 +47,8 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.45.0",
@@ -60,4 +60,4 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
-} 
+}
