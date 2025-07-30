@@ -9,7 +9,9 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:promptgrower.vercel.app)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

@@ -80,6 +80,8 @@ export interface FormStore {
   isDarkMode: boolean;
   isLoading: boolean;
   errors: ValidationError[];
+  lastSaved?: number;
+  dataRecovered?: boolean;
   
   // Actions
   updateFormData: (updates: Partial<FormData>) => void;

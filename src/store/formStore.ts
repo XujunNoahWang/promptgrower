@@ -426,17 +426,22 @@ export const useFormStore = create<FormStore>()(
       isDarkMode: true,
       isLoading: false,
       errors: [],
+      lastSaved: undefined,
+      dataRecovered: false,
       
       // Actions
       updateFormData: (updates: Partial<FormData>) => {
         set((state) => ({
           formData: { ...state.formData, ...updates },
         }));
-        get().saveToLocalStorage();
+        // Auto-save immediately after any update
+        setTimeout(() => get().saveToLocalStorage(), 0);
       },
       
       setCurrentStep: (step: number) => {
         set({ currentStep: step });
+        // Auto-save step changes
+        setTimeout(() => get().saveToLocalStorage(), 0);
       },
       
       nextStep: () => {
@@ -450,6 +455,8 @@ export const useFormStore = create<FormStore>()(
         
         if (currentStep < totalSteps) {
           set({ currentStep: currentStep + 1, errors: [] });
+          // Auto-save after step change
+          setTimeout(() => get().saveToLocalStorage(), 0);
         }
       },
       
@@ -457,6 +464,8 @@ export const useFormStore = create<FormStore>()(
         const { currentStep } = get();
         if (currentStep > 1) {
           set({ currentStep: currentStep - 1, errors: [] });
+          // Auto-save after step change
+          setTimeout(() => get().saveToLocalStorage(), 0);
         }
       },
       
@@ -495,39 +504,110 @@ export const useFormStore = create<FormStore>()(
       },
       
       saveToLocalStorage: () => {
-        const { formData, isDarkMode } = get();
-        localStorage.setItem('promptgrower-form', JSON.stringify({ formData, isDarkMode }));
+        try {
+          const { formData, isDarkMode, currentStep } = get();
+          const timestamp = Date.now();
+          const dataToSave = {
+            formData,
+            isDarkMode,
+            currentStep,
+            timestamp,
+            version: '1.1.0' // For future compatibility
+          };
+          localStorage.setItem('promptgrower-form', JSON.stringify(dataToSave));
+          // Also save a backup with timestamp
+          localStorage.setItem('promptgrower-form-backup', JSON.stringify(dataToSave));
+          // Update lastSaved timestamp in store
+          set({ lastSaved: timestamp });
+        } catch (error) {
+          console.error('Failed to save to localStorage:', error);
+        }
       },
       
       loadFromLocalStorage: () => {
         try {
-          const saved = localStorage.getItem('promptgrower-form');
+          let saved = localStorage.getItem('promptgrower-form');
+          let dataSource = 'main';
+          
+          // If main data is corrupted or empty, try backup
+          if (!saved) {
+            saved = localStorage.getItem('promptgrower-form-backup');
+            dataSource = 'backup';
+          }
+          
           if (saved) {
             const parsed = JSON.parse(saved);
-            const { formData, isDarkMode, currentStep } = parsed;
+            const { formData, isDarkMode, currentStep, timestamp } = parsed;
             
-            // Validate and merge with initial data to ensure all fields exist
-            const validatedFormData = { ...initialFormData, ...formData };
-            // Force dark mode as default, but allow user preference if explicitly set
-            const darkMode = isDarkMode !== undefined ? !!isDarkMode : true;
-            // Ensure currentStep is valid (1-9)
-            const validCurrentStep = currentStep && currentStep >= 1 && currentStep <= 9 ? currentStep : 1;
+            // Check if data is reasonably recent (within 30 days)
+            const isRecentData = !timestamp || (Date.now() - timestamp < 30 * 24 * 60 * 60 * 1000);
             
-            set({ formData: validatedFormData, isDarkMode: darkMode, currentStep: validCurrentStep });
-            // Update DOM immediately
-            if (darkMode) {
-              document.documentElement.classList.add('dark');
-            } else {
-              document.documentElement.classList.remove('dark');
+            if (isRecentData) {
+              // Validate and merge with initial data to ensure all fields exist
+              const validatedFormData = { ...initialFormData, ...formData };
+              // Force dark mode as default, but allow user preference if explicitly set
+              const darkMode = isDarkMode !== undefined ? !!isDarkMode : true;
+              // Ensure currentStep is valid (1-9)
+              const validCurrentStep = currentStep && currentStep >= 1 && currentStep <= 9 ? currentStep : 1;
+              
+              set({ 
+                formData: validatedFormData, 
+                isDarkMode: darkMode, 
+                currentStep: validCurrentStep,
+                dataRecovered: dataSource === 'backup',
+                lastSaved: timestamp
+              });
+              
+              // Update DOM immediately
+              if (darkMode) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+              
+              console.log(`Form data loaded from ${dataSource}`);
+              return;
             }
-          } else {
-            // No saved data, set default dark mode
-            set({ formData: initialFormData, isDarkMode: true, currentStep: 1 });
-            document.documentElement.classList.add('dark');
           }
+          
+          // No valid saved data, set defaults
+          set({ formData: initialFormData, isDarkMode: true, currentStep: 1 });
+          document.documentElement.classList.add('dark');
+          console.log('No valid saved data found, using defaults');
+          
         } catch (error) {
           console.error('Failed to load form data from localStorage:', error);
-          // Reset to initial state if loading fails
+          
+          // Try to recover from backup if main storage failed
+          try {
+            const backup = localStorage.getItem('promptgrower-form-backup');
+            if (backup) {
+              const parsed = JSON.parse(backup);
+              const { formData, isDarkMode, currentStep } = parsed;
+              const validatedFormData = { ...initialFormData, ...formData };
+              const darkMode = isDarkMode !== undefined ? !!isDarkMode : true;
+              const validCurrentStep = currentStep && currentStep >= 1 && currentStep <= 9 ? currentStep : 1;
+              
+              set({ 
+                formData: validatedFormData, 
+                isDarkMode: darkMode, 
+                currentStep: validCurrentStep
+              });
+              
+              if (darkMode) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+              
+              console.log('Data recovered from backup after main storage failure');
+              return;
+            }
+          } catch (backupError) {
+            console.error('Backup recovery also failed:', backupError);
+          }
+          
+          // Final fallback: reset to initial state
           set({ formData: initialFormData, isDarkMode: true, currentStep: 1 });
           document.documentElement.classList.add('dark');
         }
