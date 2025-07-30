@@ -7,14 +7,14 @@ import { Step1 } from './pages/Step1';
 import { Step2 } from './pages/Step2';
 import { useFormStore } from './store/formStore';
 
-// Lazy load other step components
-const Step3 = React.lazy(() => import('./pages/Step3').then(module => ({ default: module.Step3 })));
-const Step4 = React.lazy(() => import('./pages/Step4').then(module => ({ default: module.Step4 })));
-const Step5 = React.lazy(() => import('./pages/Step5').then(module => ({ default: module.Step5 })));
-const Step6 = React.lazy(() => import('./pages/Step6').then(module => ({ default: module.Step6 })));
-const Step7 = React.lazy(() => import('./pages/Step7').then(module => ({ default: module.Step7 })));
-const Step8 = React.lazy(() => import('./pages/Step8').then(module => ({ default: module.Step8 })));
-const Step9 = React.lazy(() => import('./pages/Step9').then(module => ({ default: module.Step9 })));
+// Direct imports to avoid lazy loading issues in production
+import { Step3 } from './pages/Step3';
+import { Step4 } from './pages/Step4';
+import { Step5 } from './pages/Step5';
+import { Step6 } from './pages/Step6';
+import { Step7 } from './pages/Step7';
+import { Step8 } from './pages/Step8';
+import { Step9 } from './pages/Step9';
 
 // Route guard component
 const StepGuard: React.FC<{ step: number; children: React.ReactNode }> = ({ children }) => {
@@ -190,13 +190,7 @@ const AppContent: React.FC = () => {
             </div>
           </div>
         ) : (
-          <>
-          <React.Suspense fallback={
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            </div>
-          }>
-            <Routes>
+          <Routes>
               <Route path="/" element={<Navigate to="/step/1" replace />} />
               <Route
                 path="/step/1"
@@ -306,9 +300,7 @@ const AppContent: React.FC = () => {
                   </StepGuard>
                 }
               />
-            </Routes>
-          </React.Suspense>
-          </>
+          </Routes>
         )}
       </main>
 
